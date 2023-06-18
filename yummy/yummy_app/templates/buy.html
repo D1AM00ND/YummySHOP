@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="text-align: center; margin: 0.5% 0 2% 0; color: #452319; background-color: #C5D0E6; border-radius: 50px">
+    Оплата</h1>
+
+
+
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="card dark my-lg-5 p-3">
+            <form class="col-md-8 offset-md-2" method="post" action="{% url 'buy' %}">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" class="btn btn-warning  rounded-pill px-3">
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

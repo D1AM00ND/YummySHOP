@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center; margin: 0.5% 0 2% 0; color: #452319; background-color: #C5D0E6; border-radius: 50px">
+    Регистрация</h1>
+<container
+        style="border-radius: 0 0 30px 30px; background-color: #FDD9B5; display: flex; flex-wrap: wrap; padding: 2%; margin-bottom: 2%; border-radius: 50px">
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Зарегистрироваться">
+    </form>
+
+</container>
+
+
+{% endblock %}

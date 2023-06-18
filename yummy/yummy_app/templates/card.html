@@ -1,0 +1,10 @@
+<div class="product card"
+     style="border-color: #452319; display: inline-block; width: 30%; height: 35%; margin: 1%; border-radius: 15px;"><a
+        style="text-decoration: none" href="{% url 'details' card.id %}">
+    <img class="card-img-top" src="{{ card.image.url }}" alt="Preview">
+    <div style="margin: 0; padding: 4%">
+        <h3 style="font-size: 140%; color: #452319; overflow: hidden; display: -webkit-box; box-orient: vertical; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+            {{ card.name }}</h3>
+        <h4 style="font-size: 175%; color: #452319">{{ card.price }}₽</h4>
+    </div>
+</a></div>

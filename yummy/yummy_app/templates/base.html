@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>YummySHOP</title>
+
+    <style type="text/css">
+      .navbar-collapse{
+        flex-grow: 0;
+      }
+
+      .ssilka{
+        text-decoration: none;
+        color: #452319;
+      }
+
+      .ssilka:hover{
+        color: #A26655;
+      }
+
+      .ssilka:visited{
+        color: #452319;
+      }
+
+      .product:hover{
+        border-color: #A26655;
+      }
+
+      a{
+        text-decoration: none;
+      }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="font-weight: bold; color: #452319; font-family: Palatino; font-size: 25px"
+           href="{% url 'home' %}">YummySHOP</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" style="color: #452319" aria-current="page" href="{% url 'home' %}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #452319" href="{% url 'aboutus' %}">О Нас</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #452319" href="{% url 'cart' %}">Корзина</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #452319" href="{% url 'profile' %}">Профиль</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #452319" href="{% url 'login' %}">Авторизация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #452319" href="{% url 'registration' %}">Регистрация</a>
+                </li>
+                {% endif %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="color: #452319" href="#" id="navbarDropdown"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Категории
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for category in categories %}
+                        <li><a class="dropdown-item" style="color: #452319" href="{% url 'category' category.id %}">
+                            {{ category }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <!--            <li class="nav-item">-->
+                <!--              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+                <!--            </li>-->
+            </ul>
+            <form class="d-flex" method="post" action="{% url 'search'%}">
+                {% csrf_token %}
+                <input class="form-control mr-2" type="search" name="name" placeholder="Введите запрос"
+                       aria-label="Search">
+                <button class="btn btn-outline-success" style="color: #452319; border-color: #452319" type="submit">
+                    Поиск
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

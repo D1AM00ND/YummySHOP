@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="text-align: center; margin: 0.5% 0 2% 0; color: #452319; background-color: #C5D0E6; border-radius: 50px">
+    Ваш профиль</h1>
+<container
+        style="width: 100%; border-radius: 30px; background-color: #FDD9B5; display: flex; flex-wrap: wrap; padding: 2%; margin-bottom: 2%">
+
+    <div>
+        <h3 style="color: #452319">Имя пользователя: {{ user.username }}</h3>
+        <h3 style="color: #452319">Имя: {{ user.first_name }}</h3>
+        <h3 style="color: #452319">Фамилия: {{ user.last_name }}</h3>
+        <h3 style="color: #452319">Электронная почта: {{ user.email }}</h3>
+    </div>
+    <button style="height: 100%; border-radius: 20px; float: right; margin-left: auto;" class="btn btn-secondary"
+            onclick="window.location.href='{% url 'logout' %}?next={% url 'home' %}'"><b>Выход</b>
+    </button>
+
+</container>
+
+{% endblock %}

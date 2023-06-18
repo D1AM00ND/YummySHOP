@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<container class="my-2 my-sm-3 my-lg-3 d-flex">
+    <div><img src="{{ product.image.url }}" style="width: 100%"></div>
+    <div class="container" style="color: #452319; background-color: #FDD9B5; border-radius: 50px; padding: 3%">
+        <h3 class="float-end" style="color: #452319; font-size: 20px;" vlink="#6c757d"><a style="color: #6c757d;"
+                                                                                          href="{% url 'category' product.type.id %}">
+            {{ product.type }}</a></h3>
+        <h1 style="color: #452319;">{{ product.name }}</h1>
+        <p style="font-size: 25px; color: #452319;">{{ product.description }}</p>
+        <div class="d-flex">
+            <h2 style="font-size: 40px; color: #452319;">{{ product.price }}₽</h2>
+            <div style="float: right; margin-left: auto;">
+                {% include 'add-product.html' with id=product.id %}
+            </div>
+        </div>
+    </div>
+</container>
+
+{% endblock %}
